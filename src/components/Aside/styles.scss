@@ -1,0 +1,33 @@
+.aside {
+    margin-top: 30px;
+    width: 15%;
+    height: 500px;
+    text-align: center;
+
+    &__container {}
+
+    &__search {
+
+        .search__title {
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .search {
+
+            &__submit {
+                color: red;
+                font-size: 30px;
+                background-color: green;
+            }
+        }
+    }
+}
+
+.search__text {
+    display: none;
+    color: green;
+    margin-top: 50px;
+    font-size: 30px;
+    border: 1px solid black;
+}

@@ -1,0 +1,44 @@
+.galery {
+    width: 70%;
+    margin: 20px 0;
+    background-color: #6e6b6b;
+
+    &__title {
+        text-align: center;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin: 30px 0;
+    }
+
+    &__container {
+        width: fit-content;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        text-align: center;
+
+    }
+
+    &__item {
+        position: relative;
+        width: 80%;
+        height: 33%;
+        margin-bottom: 20px;
+    }
+
+    &__img {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        height: 100%;
+    }
+
+    &__credit {
+        position: absolute;
+        bottom: 20px;
+        left: 50px;
+        padding: 5px;
+        border: 3px solid salmon;
+        background-color: rgba(223, 163, 156, 0.61);
+    }
+}
