@@ -12,7 +12,7 @@ const Footer = () => {
                     <a href="/auth" className="footer__link">Sign in</a>
                 </div>
             </div>
-            <div className="footer__info">2023 © DICKPICK ™</div>
+            <div className="footer__info">2023 © DISKPISK ™</div>
         </div>
     )
 }

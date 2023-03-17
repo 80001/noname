@@ -4,11 +4,12 @@
     height: 500px;
     text-align: center;
 
-    &__container {}
+
 
     &__search {
 
-        .search__title {
+        .search__title,
+        .aside-title {
             text-transform: uppercase;
             font-weight: bold;
         }
@@ -30,4 +31,52 @@
     margin-top: 50px;
     font-size: 30px;
     border: 1px solid black;
+}
+
+.search__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.search__input {
+    width: 95%;
+    height: 50px;
+    border-bottom: 1px solid brown;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+
+.form__submit {
+    width: 80%;
+    height: 50px;
+}
+
+.search__history {
+    height: 180px;
+    margin: 10px auto;
+    font-style: italic;
+    color: #0000006c;
+}
+
+.history__block {
+    margin-top: 10px;
+}
+
+.history__item {
+    padding: 5px;
+}
+.filter{
+    &__orientation{
+        margin: 10px 0;
+    }
+    &__subtitle{
+        font-style: italic;
+        margin: 5px auto;
+        
+    }
+    &__or{
+        font-size: 20px;
+    }
 }

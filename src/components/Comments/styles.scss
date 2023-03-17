@@ -1,10 +1,19 @@
 .sidebar {
-    width: 15%;
+    position: absolute;
+    right: 0;
+    top: 20px;
+    width: 150px;
 
-    &__container {
-        width: 100%;
+    &__container {}
+
+    &__comments {
+        text-align: center;
     }
-
-    &__comments {}
-
 }
+
+.comments__title {
+    margin: 20px auto;
+    font-weight: bold;
+}
+
+.comments__text {}
