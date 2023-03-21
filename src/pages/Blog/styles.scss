@@ -1,0 +1,136 @@
+.blog{
+	position: relative;
+//main
+	&__container{
+		text-align: center;
+		margin: 10px auto;
+		
+	}
+	&__main-title{
+		font-size: 25px;
+		font-weight: 700;
+		margin-bottom: 10px;
+	}
+	&__main-subtitle{
+		font-size: 20px;
+		font-weight: 600;
+		margin-bottom: 30px;
+	}
+	&__button{
+		margin-left: auto;
+	}
+}
+.post{
+	//post
+	&__title{
+		font-size: 20px;
+		font-weight: 500;
+		margin-bottom: 10px;
+		font-style: italic;
+	}
+	&__subtitle{
+		font-size: 18;
+		margin-bottom: 10px;
+	}
+	&__context{
+		font-style: italic;
+		margin: 15px auto;
+	}
+	&__img{
+		min-width: 50%;
+		width: 60%;
+		margin: 15px auto;
+		img{
+			width: 100%;
+			height: 100%;
+		}
+	}
+	&__text{
+		width: 60%;
+		margin: 0 auto;
+		letter-spacing: 2px;
+	}
+}
+.write{
+	&__modal{
+		z-index: 2;
+		width: 1140px;
+		height: 800px;
+		position: fixed;
+		right: 20%;
+		top: 100px;
+	}
+	&__main-context{
+		background-color: #aeababac;
+	}
+	&__context{
+		display: flex;
+		flex-direction: column;
+		
+	}
+	&__title{
+		font-size: 20px;
+		font-weight: 500;
+		margin-bottom: 10px;
+	}
+	&__subtitle{
+		font-size: 18;
+		margin: 10px 30px 10px;
+		text-align: center;
+	}
+	&__form{
+		text-align: left;
+		display: flex;
+		flex-direction: column;
+	}
+	&__form-title{
+
+		font-size: 18px;
+		font-weight: 500;
+		margin: 5px 0 5px 10px;
+	}
+	&__button{
+		min-width: auto;
+		width: fit-content;
+		margin: 0 auto;
+	}
+	&__add-title,
+	&__add-subtitle,
+	&__add-img,
+	&__add-text{
+		padding: 5px 0;
+		margin: 5px;
+		border-bottom: 1px solid #fff;
+		font-size: 20px;
+		font-weight: 500;
+		height: fit-content;
+		background-color: #5d515185;
+	}
+	&__add-title::placeholder,
+	&__add-subtitle::placeholder,
+	&__add-img::placeholder,
+	&__add-text::placeholder{
+		color: #000;
+		font-weight: 400;
+	}
+	&__add-title:focus::placeholder,
+	&__add-subtitle:focus::placeholder,
+	&__add-img:focus::placeholder,
+	&__add-text:focus::placeholder{
+		font-size: 0;
+	}
+}
+.modal-bg{
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	background-color: #000;
+	opacity: .5;
+
+}
+.title-up{
+	text-transform: capitalize;
+}

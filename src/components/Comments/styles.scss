@@ -1,17 +1,19 @@
 .sidebar {
-    position: absolute;
-    right: 0;
-    top: 20px;
+    position: fixed;
+    right: 400px;
+    top: --scrollTop;
     width: 150px;
 
     &__container {}
 
-    &__comments {
+    &__comments,
+    &__write {
         text-align: center;
     }
 }
 
-.comments__title {
+.comments__title,
+.write__title {
     margin: 20px auto;
     font-weight: bold;
 }

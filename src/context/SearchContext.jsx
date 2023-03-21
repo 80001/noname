@@ -7,6 +7,8 @@ export const SearchContext = createContext({
     setHistory: () => { },
     showComments: true,
     setShowComments: () => { },
+    writeComments: false,
+    setWriteComments: () => { },
     orientation: '',
     setOrientation: () => { },
     page: 1,
@@ -19,6 +21,7 @@ export const SearchProvider = ({ children }) => {
     const [search, setSearch] = useState("")
     const [history, setHistory] = useState([])
     const [showComments, setShowComments] = useState(true)
+    const [writeComments, setWriteComments] = useState(false)
     const [orientation, setOrientation] = useState("landscape")
     const [page, setPage] = useState(1)
     const [isLoading, setIsLoading] = useState(false)
@@ -37,6 +40,8 @@ export const SearchProvider = ({ children }) => {
         setPage,
         isLoading,
         setIsLoading,
+        writeComments,
+        setWriteComments
     }
     return (
         <SearchContext.Provider value={value}>

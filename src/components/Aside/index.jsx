@@ -57,7 +57,7 @@ const Aside = () => {
                 id="orientation"
                 className="filter__or"
                 onChange={(value) => setOrientation(value.target.value)}>
-                <option selected value="landscape">Landscape</option>
+                <option defaultValue="landscape">Landscape</option>
                 <option value="portrait">Portrait</option>
                 <option value="squarish">Squarish</option>
               </select>

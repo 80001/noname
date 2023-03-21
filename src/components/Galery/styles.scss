@@ -19,7 +19,7 @@
         padding: 5px;
     }
     &__page-input{
-        width: 40px;
+        width:40px;
     }
     &__error {
         font-size: 30px;
@@ -46,6 +46,9 @@
     }
 
     &__img {
+        &:hover{
+            cursor: pointer;
+        }
         display: flex;
         align-items: center;
         width: 100%;

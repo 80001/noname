@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import Navigation from './pages/Navigation';
 
 function App() {
+
   return (
     <Routes>
       <Route path='/' element={<Navigation />}>

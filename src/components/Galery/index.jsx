@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { createApi } from 'unsplash-js'
 import { accessKey } from '../../config/apiKeys'
 import { SearchContext } from '../../context/SearchContext';
-import { PhotoComp } from './PhotoComp';
+import CommentsWrite, { PhotoComp } from './PhotoComp';
 import Loading from '../Loading';
 import './styles.scss'
 import Pages from '../Pages';
@@ -13,7 +13,7 @@ const api = createApi({
 
 const Galery = () => {
   const [data, setPhotosResponse] = useState(null);
-  const { history, orientation, page, setPage, isLoading, setIsLoading } = useContext(SearchContext)
+  const { history, orientation, page, isLoading, setIsLoading } = useContext(SearchContext)
   let ask = history[history.length - 1]
 
 
@@ -59,6 +59,7 @@ const Galery = () => {
             data.response.results.map(photo => (
               <li key={photo.id} className="galery__item">
                 <PhotoComp photo={photo} />
+                <CommentsWrite photo={photo} />
               </li>
             ))}
         </ul>
