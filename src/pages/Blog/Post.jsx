@@ -7,7 +7,9 @@ const Post = ({ post }) => {
 				<h2 className="post__title">{title}</h2>
 				<h3 className="blog__subtitle">{subtitle}</h3>
 				<img src={img} alt="" className="post__img" />
-				<p className="post__text">{text}</p>
+				<div className="post__text-wrapper">
+					<p className="post__text">{text}</p>
+				</div>
 			</div>
 		</div>
 	)

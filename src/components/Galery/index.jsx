@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import { createApi } from 'unsplash-js'
 import { accessKey } from '../../config/apiKeys'
 import { SearchContext } from '../../context/SearchContext';
-import CommentsWrite, { PhotoComp } from './PhotoComp';
 import Loading from '../Loading';
 import './styles.scss'
 import Pages from '../Pages';
+import PhotoComp from './PhotoComp';
 
 const api = createApi({
   accessKey: accessKey
@@ -59,7 +59,6 @@ const Galery = () => {
             data.response.results.map(photo => (
               <li key={photo.id} className="galery__item">
                 <PhotoComp photo={photo} />
-                <CommentsWrite photo={photo} />
               </li>
             ))}
         </ul>

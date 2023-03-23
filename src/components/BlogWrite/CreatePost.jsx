@@ -1,21 +1,46 @@
-import { useContext } from "react"
-import Button from "../../components/Button"
+import { useContext, useState } from "react"
+import Button from "../Button"
 import { BlogContext } from "../../context/BlogContext"
 
+const defaultValues = {
+	title: '',
+	subtitle: '',
+	img: '',
+	text: '',
+}
+export const copyUrl = (url) => {
+	defaultValues.img = url
+}
 const CreatePost = () => {
-
-	const { setImg, setSubtitle, setTitle, setText, setPosts, setId, posts, img, title, subtitle, text, id } = useContext(BlogContext)
+	const [values, setValues] = useState(defaultValues)
+	const { setImg, setSubtitle, setTitle, setText, setModal, setPosts, setId, posts, img, title, subtitle, text, id } = useContext(BlogContext)
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		setPosts([...posts, { title, subtitle, img, text, id }])
+		setModal(false)
 		console.log(posts)
 	}
 	const handleChange = (e) => {
-		setTitle(e.target.value)
-		setSubtitle(e.target.value)
-		setImg(e.target.value)
-		setText(e.target.value)
-		setId(posts.length + 1)
+		const { name, value } = e.target
+		setId(posts.length)
+		setValues({ ...values, [name]: value })
+		console.log(values)
+		if (name === 'title') {
+			setTitle(value)
+		} else if (name === 'subtitle') {
+			setSubtitle(value)
+		} else if (name === 'img') {
+			setImg(value)
+		} else if (name === 'text') {
+			setText(value)
+		}
+	}
+	const submitEnable = () => {
+		if (img
+			&& subtitle
+			&& text
+			&& title) return false
+		return true
 	}
 
 	return (
@@ -28,36 +53,50 @@ const CreatePost = () => {
 					<input
 						type="text"
 						required
+						name="title"
+						value={values.title}
 						onChange={handleChange}
 						className="write__add-title"
+						minLength={1}
 						maxLength={10}
 						placeholder="<=10 Symbols" />
 					<h5 className="write__form-title title-up">Subtitle:</h5>
 					<input
-						type="text"
+						type="url"
+						pattern="url"
 						required
+						name="subtitle"
+						value={values.subtitle}
 						onChange={handleChange}
 						className="write__add-subtitle"
+						minLength={1}
 						maxLength={100}
 						placeholder="<=100 Symbols" />
 					<h5 className="write__form-title title-up">Image-Url:</h5>
 					<input
 						type="text"
 						required
+						name="img"
+						id="img"
+						value={values.img}
 						onChange={handleChange}
+						minLength={10}
 						className="write__add-img"
 						placeholder="URL" />
 					<h5 className="write__form-title title-up">Text:</h5>
 					<input
 						type="text"
 						required
+						name="text"
+						value={values.txt}
 						onChange={handleChange}
 						className="write__add-text"
+						min={1}
 						maxLength={5000}
 						placeholder="<=5000 Symbols" />
 				</form>
 			</div>
-			<Button className='write__button' onClick={handleSubmit}>Submit</Button>
+			<Button className='write__button' disabled={submitEnable()} onClick={handleSubmit}>Submit</Button>
 		</div>
 	)
 }
