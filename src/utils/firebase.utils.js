@@ -1,7 +1,11 @@
 import { initializeApp } from "firebase/app";
 import {
 	addDoc,
+	doc,
 	collection,
+	getDoc,
+	setDoc,
+	get,
 	getFirestore,
 
 } from "firebase/firestore";
@@ -26,6 +30,7 @@ const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
 
 export const addPosts = async (title, subtitle, img, text, id) => {
+	if (title === '' || subtitle === '' || img === '' || text === '') return
 	try {
 		const docRef = await addDoc(collection(db, 'posts'), {
 			title,
@@ -39,3 +44,5 @@ export const addPosts = async (title, subtitle, img, text, id) => {
 		console.error('Error: ', e)
 	}
 }
+
+
