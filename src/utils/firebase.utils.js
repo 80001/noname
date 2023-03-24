@@ -7,6 +7,8 @@ import {
 	setDoc,
 	get,
 	getFirestore,
+	query,
+	getDocs,
 
 } from "firebase/firestore";
 
@@ -45,4 +47,12 @@ export const addPosts = async (title, subtitle, img, text, id) => {
 	}
 }
 
-
+export const getPosts = async () => {
+	const q = query(collection(db, 'posts'))
+	let posts = []
+	const qSnap = await getDocs(q)
+	qSnap.forEach((doc) => {
+		posts = [...posts, doc.data()]
+	})
+	return posts
+}
