@@ -16,9 +16,6 @@ const Galery = () => {
   const { history, orientation, page, isLoading, setIsLoading } = useContext(SearchContext)
   let ask = history[history.length - 1]
 
-
-
-
   useEffect(() => {
     setIsLoading(true)
     api.search

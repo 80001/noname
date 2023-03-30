@@ -21,14 +21,12 @@ const Pages = (data) => {
 			setPage(lastPage)
 		}
 		setPage(Number(page) + 1)
-		console.log('page+', page)
 	}
 	const pageSetMinus = () => {
 		if (page <= 1) {
 			return page
 		}
 		setPage(Number(page) - 1)
-		console.log('page-', page)
 	}
 	const pageEnter = (e) => {
 		setPage(e.target.value)

@@ -7,12 +7,11 @@ import Post from './Post'
 import './styles.scss'
 
 const Blog = () => {
-    const [postsMap, setPostsMap] = useState([])
-    const { posts } = useContext(BlogContext)
+    const { posts,postsMap, setPostsMap } = useContext(BlogContext)
     useEffect(() => {
         const getPostsMap = async () => {
             const postMap = await getPosts()
-            setPostsMap(postMap.reverse())
+            setPostsMap(postMap)
         }
         getPostsMap()
     }, [posts])
@@ -25,6 +24,7 @@ const Blog = () => {
                 <h1 className="blog__main-title title-up">Blog or Not</h1>
                 <h2 className="blog__main-subtitle title-up">Retard! You can read or write a post by yourself! If you can write, ofcourse!</h2>
                 {postsMap.map(post => {
+                    console.log(postsMap)
                     return (
                         <Post
                             key={post.id}

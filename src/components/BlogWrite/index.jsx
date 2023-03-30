@@ -8,6 +8,9 @@ const BlogWrite = () => {
     const { modal, setModal } = useContext(BlogContext)
     const showModal = () => {
         setModal(!modal)
+        console.log(modal)
+        setModal(!modal)
+        console.log(modal)
     }
     const buttonTitle = () => {
         if (!modal) return 'Create Post'
@@ -26,8 +29,11 @@ const BlogWrite = () => {
         <div className="write">
             <div className={modalBg()}></div>
             <div className={disableModal()}>
+                {modal && 
                 <Button className='blog__button'
-                    onClick={showModal}>{buttonTitle()}</Button>
+                onClick={showModal}>{buttonTitle()}
+                    </Button>
+            }
                 {modal &&
                     <CreatePost />
                 }

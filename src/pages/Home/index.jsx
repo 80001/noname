@@ -2,16 +2,15 @@ import './styles.scss'
 import { Outlet } from 'react-router-dom'
 import Aside from '../../components/Aside'
 import Galery from '../../components/Galery'
-import Comments from '../../components/BlogWrite'
 import Footer from '../Footer'
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { SearchContext } from '../../context/SearchContext'
-import CommentsWrite from '../../components/Galery/PhotoComp'
-
-
+import BlogWrite from '../../components/BlogWrite'
+import PhotoComp from '../../components/Galery/PhotoComp'
+import { BlogContext } from '../../context/BlogContext'
+import { getPosts } from '../../utils/firebase.utils'
 
 const Home = () => {
-
     window.addEventListener('scroll', e => {
         document.body.style.cssText = `--scrollTop: ${window.scrollY}px`
         const hide = document.querySelector('.button-up')
@@ -25,7 +24,14 @@ const Home = () => {
         window.scrollTo(0, 0)
     }
     const { showComments, writeComments } = useContext(SearchContext)
-
+    const { posts, setPostsMap } = useContext(BlogContext)
+    useEffect(() => {
+        const getPostsMap = async () => {
+            const postMap = await getPosts()
+            setPostsMap(postMap)
+        }
+        getPostsMap()
+    }, [posts])
 
     return (
         <>
@@ -33,9 +39,9 @@ const Home = () => {
                 <Outlet />
                 <Aside />
                 <Galery />
-                {showComments && <Comments />}
+                {showComments && <BlogWrite />}
                 {showComments}
-                {writeComments && <CommentsWrite />}
+                {writeComments && <PhotoComp />}
             </div>
             <button
                 className='button-up button-container hide'

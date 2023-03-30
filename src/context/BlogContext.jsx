@@ -4,6 +4,8 @@ import { addPosts } from "../utils/firebase.utils";
 export const BlogContext = createContext({
 	posts: [],
 	setPosts: () => { },
+	postsMap: [],
+	setPostsMap: () => { },
 	title: '',
 	setTitle: () => { },
 	subtitle: '',
@@ -25,6 +27,7 @@ export const BlogProvider = ({ children }) => {
 	const [img, setImg] = useState('')
 	const [text, setText] = useState('')
 	const [modal, setModal] = useState(false)
+    const [postsMap, setPostsMap] = useState([])
 	const defaultPost = {
 		title: 'Title',
 		subtitle: 'Subtitle',
@@ -56,7 +59,9 @@ export const BlogProvider = ({ children }) => {
 		setText,
 		setTitle,
 		setId,
-		setModal
+		setModal,
+		postsMap,
+		setPostsMap
 	}
 	return (
 		<BlogContext.Provider value={value}>

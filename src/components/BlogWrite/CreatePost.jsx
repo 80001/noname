@@ -10,10 +10,29 @@ const defaultValues = {
 }
 export const copyUrl = (url) => {
 	defaultValues.img = url
+	console.log(defaultValues.img)
 }
 const CreatePost = () => {
 	const [values, setValues] = useState(defaultValues)
-	const { setImg, setSubtitle, setTitle, setText, setModal, setPosts, setId, posts, img, title, subtitle, text, id } = useContext(BlogContext)
+	const { setImg,
+		setSubtitle,
+		setTitle,
+		setText,
+		setModal,
+		setPosts,
+		setId,
+		setPostsMap,
+		posts,
+		img,
+		title,
+		subtitle,
+		text,
+		id,
+		postsMap } = useContext(BlogContext)
+	const copyImg = (e) => {
+		setImg(e.target.value)
+		console.log(img)
+	}
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		setPosts([...posts, { title, subtitle, img, text, id }])
@@ -22,7 +41,7 @@ const CreatePost = () => {
 	}
 	const handleChange = (e) => {
 		const { name, value } = e.target
-		setId(posts.length)
+		setId(postsMap.length + 1)
 		setValues({ ...values, [name]: value })
 		console.log(values)
 		if (name === 'title') {
@@ -30,13 +49,13 @@ const CreatePost = () => {
 		} else if (name === 'subtitle') {
 			setSubtitle(value)
 		} else if (name === 'img') {
-			setImg(value)
+				setImg(value)
 		} else if (name === 'text') {
 			setText(value)
 		}
 	}
 	const submitEnable = () => {
-		if (img
+		if (img||defaultValues.img
 			&& subtitle
 			&& text
 			&& title) return false
@@ -75,10 +94,12 @@ const CreatePost = () => {
 					<h5 className="write__form-title title-up">Image-Url:</h5>
 					<input
 						type="text"
+						contentEditable='true'
 						required
 						name="img"
 						id="img"
 						value={values.img}
+						onInput={copyImg}
 						onChange={handleChange}
 						minLength={10}
 						className="write__add-img"
@@ -88,7 +109,7 @@ const CreatePost = () => {
 						type="text"
 						required
 						name="text"
-						value={values.txt}
+						value={values.text}
 						onChange={handleChange}
 						className="write__add-text"
 						min={1}
@@ -96,7 +117,7 @@ const CreatePost = () => {
 						placeholder="<=5000 Symbols" />
 				</form>
 			</div>
-			<Button className='write__button' disabled={submitEnable()} onClick={handleSubmit}>Submit</Button>
+			<Button className='write__button' disabled={submitEnable()} onClick={handleSubmit} title='FILL ALL COLUMNS'>Submit</Button>
 		</div>
 	)
 }

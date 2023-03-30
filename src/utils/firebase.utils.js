@@ -9,6 +9,7 @@ import {
 	getFirestore,
 	query,
 	getDocs,
+	deleteDoc
 
 } from "firebase/firestore";
 
@@ -55,4 +56,9 @@ export const getPosts = async () => {
 		posts = [...posts, doc.data()]
 	})
 	return posts
+}
+
+export const deletePosts = async (post) => {
+	await deleteDoc(doc(db, 'posts',{post}))
+	console.log(`Post ${post.title} was deleted!`)
 }
