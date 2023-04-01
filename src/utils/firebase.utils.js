@@ -48,7 +48,7 @@ export const addPosts = async (title, subtitle, img, text, id) => {
 	}
 }
 
-export const getPosts = async () => {
+/* export const getPosts = async () => {
 	const q = query(collection(db, 'posts'))
 	let posts = []
 	const qSnap = await getDocs(q)
@@ -56,9 +56,26 @@ export const getPosts = async () => {
 		posts = [...posts, doc.data()]
 	})
 	return posts
-}
+} */
+export const getPosts = async () => {
+	const postsCollection = collection(db, "posts");
+	const postsSnapshot = await getDocs(postsCollection);
+	const posts = [];
 
-export const deletePosts = async (post) => {
-	await deleteDoc(doc(db, 'posts',{post}))
-	console.log(`Post ${post.title} was deleted!`)
-}
+	postsSnapshot.forEach((postDoc) => {
+		const postData = postDoc.data();
+		const postId = postDoc.id; // отримуємо id документа
+		posts.push({ ...postData, id: postId });
+	});
+
+	return posts;
+};
+
+export const deletePosts = async (postId) => {
+	try {
+	  await deleteDoc(doc(db, "posts", postId));
+	  console.log(`Документ з id ${postId} успішно видалено`);
+	} catch (error) {
+	  console.error("Помилка видалення документа:", error);
+	}
+  };

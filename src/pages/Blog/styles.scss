@@ -58,8 +58,6 @@
 	&__img{
 		width: 100%;
 		height: 100%;
-		img{
-		}
 	}
 	&__img:hover{
 		.post__delete{
@@ -83,7 +81,7 @@
 	left: auto;
 	&__modal{
 		display: block;
-		z-index: 3;
+		z-index: 30;
 		width: 1140px;
 		height: 800px;
 		position: fixed;

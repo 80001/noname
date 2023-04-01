@@ -1,6 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import BlogWrite from '../../components/BlogWrite'
-import Button from '../../components/Button'
 import { BlogContext } from '../../context/BlogContext'
 import { getPosts } from '../../utils/firebase.utils'
 import Post from './Post'
@@ -23,8 +22,9 @@ const Blog = () => {
             <div className="blog__container">
                 <h1 className="blog__main-title title-up">Blog or Not</h1>
                 <h2 className="blog__main-subtitle title-up">Retard! You can read or write a post by yourself! If you can write, ofcourse!</h2>
+                <span>There is {postsMap.length} posts</span>
                 {postsMap.map(post => {
-                    console.log(postsMap)
+                    //console.log(postsMap)
                     return (
                         <Post
                             key={post.id}

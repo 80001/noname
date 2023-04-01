@@ -37,6 +37,7 @@ const CreatePost = () => {
 		e.preventDefault()
 		setPosts([...posts, { title, subtitle, img, text, id }])
 		setModal(false)
+		defaultValues.img =''
 		console.log(posts)
 	}
 	const handleChange = (e) => {
